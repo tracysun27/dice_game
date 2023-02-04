@@ -32,17 +32,6 @@ def return_pair_index(user_roll):
     if [i,j] == [len(user_roll)-1, len(user_roll)-1]: #no pairs found
         return None
 
-def other_keys(user_roll):
-    keys = return_pair_index(user_roll)
-    other_keys = []
-    if keys != None:
-        for i in range(len(user_roll)):
-            if i == keys[0] or i == keys[1]:
-                continue
-            else:
-                other_keys.append(i)
-    return other_keys
-
 def detect_num_pairs(user_roll):
     keys = return_pair_index(user_roll)
     if keys == None: #no pairs
@@ -58,16 +47,6 @@ def detect_num_pairs(user_roll):
             return 0
         elif other_dupes == 2:
             return 4
-
-def highest_val_pair(user_roll):
-    keys = return_pair_index(user_roll)
-    keys2 = other_keys(user_roll)
-    if detect_num_pairs(user_roll) >= 1:
-        if user_roll[keys2[0]] == user_roll[keys2[1]]:
-            if user_roll[keys[0]] >= user_roll[keys2[0]]:
-                return keys
-            else:
-                return keys2
 
 def score(user_roll):
     if detect_num_pairs(user_roll) >= 1:
